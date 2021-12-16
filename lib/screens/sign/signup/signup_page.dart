@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../themes/primarybutton.dart';
+import '../../../widgets/primarybutton.dart';
 import '../../../themes/theme.dart';
 
 class SignUpPage extends StatefulWidget {

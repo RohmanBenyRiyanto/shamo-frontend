@@ -14,6 +14,8 @@ Color backgroundColor4 = const Color(0xff252836);
 Color primaryTextColor = const Color(0xffE1E1E1);
 Color secondaryTextColor = const Color(0xff999999);
 Color subtitleColor = const Color(0xff504F5E);
+Color blackColor = const Color(0xff2E2E2E);
+Color whiteCardColor = const Color(0xffECEDEF);
 Color transparentColor = Colors.transparent;
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
@@ -34,6 +36,10 @@ TextStyle priceTextStyle = GoogleFonts.poppins(
 
 TextStyle purpleTextStyle = GoogleFonts.poppins(
   color: primaryColor,
+);
+
+TextStyle blackTextStyle = GoogleFonts.poppins(
+  color: blackColor,
 );
 
 FontWeight light = FontWeight.w300;
