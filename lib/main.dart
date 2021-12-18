@@ -4,6 +4,7 @@ import './screens/splash_screen/splash_page.dart';
 import 'screens/sign/signin/signin_page.dart';
 import 'screens/sign/signup/signup_page.dart';
 import 'screens/mainpage/main_page.dart';
+import 'screens/chat/detail_chat_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/sign-in':(context) => const SignInPage(),
         '/sign-up':(context) => const SignUpPage(),
         '/home':(context) => const MainPage(),
+        '/detail-chat':(context) => const DetailChatPage(),
       },
     );
   }
