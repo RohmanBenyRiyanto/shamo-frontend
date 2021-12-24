@@ -45,6 +45,7 @@ class ChatPage extends StatelessWidget {
     Widget emptyChat() {
       return Expanded(
         child: Container(
+          margin: const EdgeInsets.only(bottom: 70.0),
           color: backgroundColor3,
           width: double.infinity,
           child: Column(

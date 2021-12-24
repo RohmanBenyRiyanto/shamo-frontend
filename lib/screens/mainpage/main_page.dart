@@ -122,7 +122,7 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       extendBody: true,
-      backgroundColor: backgroundColor1,
+      backgroundColor: currentIndex == 0 ? backgroundColor1 : backgroundColor3,
       body: SafeArea(
         child: body[currentIndex],
         bottom: false,
