@@ -28,9 +28,13 @@ class WishListPage extends StatelessWidget {
     Widget content() {
       return Expanded(
         child: Container(
+          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
           color: backgroundColor3,
           child: ListView(
+            // ignore: prefer_const_literals_to_create_immutables
             children: [
+              WishlistCard(),
+              WishlistCard(),
               WishlistCard(),
             ],
           ),

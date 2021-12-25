@@ -33,7 +33,7 @@ class DetailChatPage extends StatelessWidget {
                     height: 50,
                     child: Center(
                       child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
+                        Icons.chevron_left_rounded,
                         color: Colors.white,
                       ),
                     ),
@@ -111,7 +111,7 @@ class DetailChatPage extends StatelessWidget {
               ],
             ),
           ),
-          actions: <Widget>[],
+          actions: const <Widget>[],
           title: null,
         ),
       );
