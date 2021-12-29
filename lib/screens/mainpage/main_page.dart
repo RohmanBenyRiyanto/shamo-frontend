@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../mainpage/fixfloatingbutton/fixfloatingbutton.dart';
 
-import '../chat/chat_page.dart';
+import '../chat_page/chat_page.dart';
 import '../home/home_page.dart';
 import '../profile/profile_page.dart';
 import '../wishlist/wishlist_page.dart';
@@ -30,7 +30,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     Widget cartButton() {
       return FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/cart');
+        },
         backgroundColor: secondaryColor,
         child: Image.asset(
           'assets/icon_cart.png',
