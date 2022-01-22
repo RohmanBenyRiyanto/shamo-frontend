@@ -112,13 +112,14 @@ class CartPage extends StatelessWidget {
 
     Widget costumBottomNav() {
       return Container(
-        height: 188,
+        height: 180,
         child: Column(
           children: [
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(
-                top: 10,
+                top: 15.0,
+                bottom: 15.0,
                 left: defaultMargin,
                 right: defaultMargin,
               ),
@@ -147,9 +148,6 @@ class CartPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: defaultMargin,
-            ),
             Divider(
               thickness: 0.3,
               color: subtitleColor,
@@ -160,7 +158,9 @@ class CartPage extends StatelessWidget {
               ),
               height: 50.0,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(

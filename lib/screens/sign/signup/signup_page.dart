@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo/providers/auth_provider.dart';
 
+import '../../../widgets/loading_button.dart';
 import '../../../widgets/primarybutton.dart';
 import '../../../themes/theme.dart';
 
@@ -11,6 +14,13 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
+
   // form key
   final _formKey = GlobalKey<FormState>();
 
@@ -24,6 +34,64 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    handleSingUp() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.register(
+        name: nameController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: secondaryColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                topRight: Radius.circular(8.0),
+              ),
+            ),
+            content: Text(
+              'Registrasi Berhasil',
+              style: primaryTextStyle.copyWith(
+                fontSize: 12.0,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+        Navigator.pushNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: alertColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                topRight: Radius.circular(8.0),
+              ),
+            ),
+            content: Text(
+              'Registrasi Gagal',
+              style: primaryTextStyle.copyWith(
+                fontSize: 12.0,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+      setState(() {
+        isLoading = false;
+      });
+    }
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(top: defaultMargin),
@@ -83,6 +151,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: nameController,
                         keyboardType: TextInputType.name,
                         style: primaryTextStyle.copyWith(
                           fontSize: 14.0,
@@ -143,6 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: usernameController,
                         keyboardType: TextInputType.name,
                         style: primaryTextStyle.copyWith(
                           fontSize: 14.0,
@@ -203,6 +273,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         style: primaryTextStyle.copyWith(
                           fontSize: 14.0,
@@ -263,6 +334,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: passwordController,
                         obscureText: _isHidden,
                         style: primaryTextStyle.copyWith(
                           fontSize: 14.0,
@@ -354,13 +426,17 @@ class _SignUpPageState extends State<SignUpPage> {
                   usernameInput(),
                   emailInput(),
                   passwordInput(),
-                  PrimaryButton(
-                    text: "Sign Up",
-                    margin_top: 30.0,
-                    press: () {
-                      Navigator.pushReplacementNamed(context, '/home');
-                    },
-                  ),
+                  isLoading
+                      ? LoadingButton(
+                          text: "Loading",
+                          margin_top: 30.0,
+                          press: handleSingUp,
+                        )
+                      : PrimaryButton(
+                          text: "Sign Up",
+                          margin_top: 30.0,
+                          press: handleSingUp,
+                        ),
                   footer(),
                 ],
               ),

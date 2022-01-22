@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo/providers/auth_provider.dart';
 
+import '../../../widgets/loading_button.dart';
 import '../../../widgets/primarybutton.dart';
 import '../../../themes/theme.dart';
 
@@ -14,6 +17,11 @@ class _SignInPageState extends State<SignInPage> {
   // form key
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
+
   bool _isHidden = true;
 
   void _toggleVisibility() {
@@ -24,6 +32,62 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    handleSignIn() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.login(
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: secondaryColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                topRight: Radius.circular(8.0),
+              ),
+            ),
+            content: Text(
+              'Selamat Datang',
+              style: primaryTextStyle.copyWith(
+                fontSize: 12.0,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+        Navigator.pushNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: alertColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                topRight: Radius.circular(8.0),
+              ),
+            ),
+            content: Text(
+              'Login Gagal',
+              style: primaryTextStyle.copyWith(
+                fontSize: 12.0,
+                fontWeight: regular,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+      setState(() {
+        isLoading = false;
+      });
+    }
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(top: defaultMargin),
@@ -83,6 +147,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         style: primaryTextStyle.copyWith(
                           fontSize: 14.0,
@@ -143,6 +208,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: passwordController,
                         obscureText: _isHidden,
                         style: primaryTextStyle.copyWith(
                           fontSize: 14.0,
@@ -229,13 +295,17 @@ class _SignInPageState extends State<SignInPage> {
                   header(),
                   emailInput(),
                   passwordInput(),
-                  PrimaryButton(
-                    text: "Sign In",
-                    margin_top: 30.0,
-                    press: () {
-                      Navigator.pushReplacementNamed(context, '/home');
-                    },
-                  ),
+                  isLoading
+                      ? LoadingButton(
+                          text: "Loading",
+                          margin_top: 30.0,
+                          press: handleSignIn,
+                        )
+                      : PrimaryButton(
+                          text: "Sign In",
+                          margin_top: 30.0,
+                          press: handleSignIn,
+                        ),
                   footer(),
                 ],
               ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo/models/user_model.dart';
+import 'package:shamo/providers/auth_provider.dart';
 
 import '../../widgets/product_tile.dart';
 import '../../widgets/product_card.dart';
@@ -9,6 +12,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    // ignore: unused_local_variable
+    UserModel user = authProvider.user;
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -23,14 +30,14 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hallo, Alex',
+                    'Hallo, ${user.name}',
                     style: primaryTextStyle.copyWith(
                       fontSize: 24.0,
                       fontWeight: semiBold,
                     ),
                   ),
                   Text(
-                    '@alexkeinn',
+                    '@${user.username}',
                     style: subtitleTextStyle.copyWith(
                       fontSize: 16.0,
                       fontWeight: regular,
@@ -45,8 +52,8 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(
-                    'assets/image_profile.png',
+                  image: NetworkImage(
+                    user.profilePhotoUrl,
                   ),
                 ),
               ),
@@ -228,12 +235,14 @@ class HomePage extends StatelessWidget {
         margin: EdgeInsets.only(
           top: 14.0,
         ),
-        child: Column(children: [
-          ProductTile(),
-          ProductTile(),
-          ProductTile(),
-          ProductTile(),
-        ],),
+        child: Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
       );
     }
 

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../themes/theme.dart';
 
-class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
+class LoadingButton extends StatelessWidget {
+  const LoadingButton({
     Key? key,
     this.text,
     this.press,
+    // ignore: non_constant_identifier_names
     this.margin_top,
   }) : super(key: key);
   final String? text;
@@ -28,12 +29,28 @@ class PrimaryButton extends StatelessWidget {
           backgroundColor: primaryColor,
         ),
         onPressed: press as void Function()?,
-        child: Text(
-          text!,
-          style: primaryTextStyle.copyWith(
-            fontSize: 16,
-            fontWeight: semiBold,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 16.0,
+              height: 16.0,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation(primaryTextColor),
+              ),
+            ),
+            SizedBox(
+              width: 4.0,
+            ),
+            Text(
+              text!,
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+          ],
         ),
       ),
     );
