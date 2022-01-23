@@ -34,6 +34,7 @@ class HomePage extends StatelessWidget {
                     style: primaryTextStyle.copyWith(
                       fontSize: 24.0,
                       fontWeight: semiBold,
+                      overflow: TextOverflow.ellipsis
                     ),
                   ),
                   Text(
