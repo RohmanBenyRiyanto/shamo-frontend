@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:shamo/models/product_model.dart';
+
 import '../../themes/theme.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  const ProductCard({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +32,8 @@ class ProductCard extends StatelessWidget {
             SizedBox(
               height: defaultMargin,
             ),
-            Image.asset(
-              'assets/image_shoes.png',
+            Image.network(
+              product.galleries[2].url,
               width: 215.0,
               height: 150.0,
               fit: BoxFit.cover,
@@ -37,7 +44,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hiking',
+                    product.category.name,
                     style: secondaryTextStyle.copyWith(
                       fontSize: 12.0,
                       fontWeight: regular,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/user_model.dart';
 import 'package:shamo/providers/auth_provider.dart';
+import 'package:shamo/providers/product_provider.dart';
 
 import '../../widgets/product_tile.dart';
 import '../../widgets/product_card.dart';
@@ -13,8 +14,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
-    // ignore: unused_local_variable
     UserModel user = authProvider.user;
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
 
     Widget header() {
       return Container(
@@ -32,10 +33,9 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Hallo, ${user.name}',
                     style: primaryTextStyle.copyWith(
-                      fontSize: 24.0,
-                      fontWeight: semiBold,
-                      overflow: TextOverflow.ellipsis
-                    ),
+                        fontSize: 24.0,
+                        fontWeight: semiBold,
+                        overflow: TextOverflow.ellipsis),
                   ),
                   Text(
                     '@${user.username}',
@@ -202,11 +202,9 @@ class HomePage extends StatelessWidget {
                 width: defaultMargin,
               ),
               Row(
-                children: [
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                ],
+                children: productProvider.products
+                    .map((product) => ProductCard(product: product),)
+                    .toList(),
               )
             ],
           ),
