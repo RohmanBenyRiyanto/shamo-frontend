@@ -65,7 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         );
-        Navigator.pushNamed(context, '/home');
+        Navigator.pushNamedAndRemoveUntil(context, '/home', (Route<dynamic> route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

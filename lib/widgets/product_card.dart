@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shamo/models/product_model.dart';
+import 'package:shamo/screens/details_product/detail_page.dart';
 
 import '../../themes/theme.dart';
 
@@ -16,7 +17,12 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail-product');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailProductPage(product: product),
+          ),
+        );
       },
       child: Container(
         width: 215.0,
@@ -33,7 +39,7 @@ class ProductCard extends StatelessWidget {
               height: defaultMargin,
             ),
             Image.network(
-              product.galleries[2].url,
+              product.galleries[0].url,
               width: 215.0,
               height: 150.0,
               fit: BoxFit.cover,
@@ -54,18 +60,19 @@ class ProductCard extends StatelessWidget {
                     height: 6.0,
                   ),
                   Text(
-                    'COURT VISION 2.0',
+                    product.name,
                     style: blackTextStyle.copyWith(
                       fontSize: 18.0,
                       fontWeight: semiBold,
                     ),
                     overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                   SizedBox(
                     height: 6.0,
                   ),
                   Text(
-                    '\$ ' + '58,67',
+                    '\$ ${product.price}',
                     style: priceTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: medium,

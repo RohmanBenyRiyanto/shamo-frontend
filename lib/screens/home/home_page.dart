@@ -8,9 +8,14 @@ import '../../widgets/product_tile.dart';
 import '../../widgets/product_card.dart';
 import '../../themes/theme.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
@@ -203,7 +208,9 @@ class HomePage extends StatelessWidget {
               ),
               Row(
                 children: productProvider.products
-                    .map((product) => ProductCard(product: product),)
+                    .map(
+                      (product) => ProductCard(product: product),
+                    )
                     .toList(),
               )
             ],
@@ -235,12 +242,12 @@ class HomePage extends StatelessWidget {
           top: 14.0,
         ),
         child: Column(
-          children: [
-            ProductTile(),
-            ProductTile(),
-            ProductTile(),
-            ProductTile(),
-          ],
+          children: productProvider.products
+              .map(
+                // ignore: prefer_const_constructors
+                (product) => ProductTile(product: product),
+              )
+              .toList(),
         ),
       );
     }

@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 ClipOval(
                   child: Image.network(
-                  user.profilePhotoUrl,
+                    user.profilePhotoUrl,
                     width: 64.0,
                   ),
                 ),
@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                   width: 16.0,
                 ),
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     Navigator.pushNamedAndRemoveUntil(
                         context, '/sign-in', (route) => false);
                   },

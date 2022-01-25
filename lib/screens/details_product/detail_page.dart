@@ -1,13 +1,23 @@
 // ignore_for_file: unnecessary_new
 
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:shamo/models/product_model.dart';
+import 'package:shamo/providers/product_provider.dart';
+import 'package:shamo/widgets/familiar_shoes_card.dart';
 import 'package:shamo/widgets/primarybutton.dart';
 
 import '../../themes/theme.dart';
 
 class DetailProductPage extends StatefulWidget {
-  const DetailProductPage({Key? key}) : super(key: key);
+  final ProductModel product;
+
+  const DetailProductPage({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
 
   @override
   State<DetailProductPage> createState() => _DetailProductPageState();
@@ -19,6 +29,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
     Future<void> showSuccessDialog() async {
       return showDialog(
         context: context,
@@ -101,47 +112,14 @@ class _DetailProductPageState extends State<DetailProductPage> {
       );
     }
 
-    List images = [
-      'assets/image_shoes.png',
-      'assets/image_shoes.png',
-      'assets/image_shoes.png'
-    ];
-
-    List familiarShoes = [
-      'assets/image_shoes.png',
-      'assets/image_shoes.png',
-      'assets/image_shoes.png',
-      'assets/image_shoes.png',
-      'assets/image_shoes.png',
-      'assets/image_shoes.png'
-    ];
-
     Widget dots(int index) {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 2.0),
+        margin: const EdgeInsets.symmetric(horizontal: 2.0),
         width: currentIndex == index ? 16.0 : 4,
         height: 4.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: currentIndex == index ? primaryColor : const Color(0xffC4C4C4),
-        ),
-      );
-    }
-
-    Widget familiarShoesCard(String imageUrl) {
-      return Container(
-        width: 54.0,
-        height: 54.0,
-        margin: EdgeInsets.only(
-          right: 16,
-        ),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(imageUrl),
-          ),
-          borderRadius: BorderRadius.circular(
-            6.0,
-          ),
         ),
       );
     }
@@ -176,10 +154,10 @@ class _DetailProductPageState extends State<DetailProductPage> {
             ),
           ),
           CarouselSlider(
-            items: images
+            items: widget.product.galleries
                 .map(
-                  (image) => Image.asset(
-                    image,
+                  (image) => Image.network(
+                    image.url,
                     width: MediaQuery.of(context).size.width,
                     height: 310,
                     fit: BoxFit.cover,
@@ -195,12 +173,12 @@ class _DetailProductPageState extends State<DetailProductPage> {
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: images.map((e) {
+            children: widget.product.galleries.map((e) {
               index++;
               return dots(index);
             }).toList(),
@@ -215,7 +193,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
       return Container(
         width: double.infinity,
         // height: MediaQuery.of(context).size.height,
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 17.0,
         ),
         decoration: BoxDecoration(
@@ -243,7 +221,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'TERREX URBAN LOW',
+                          widget.product.name,
                           style: primaryTextStyle.copyWith(
                             fontSize: 18.0,
                             fontWeight: semiBold,
@@ -252,7 +230,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          'Hiking',
+                          widget.product.category.name,
                           style: secondaryTextStyle.copyWith(
                             fontSize: 12.0,
                             fontWeight: regular,
@@ -346,7 +324,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     ),
                   ),
                   Text(
-                    '\$ ' + '143,98',
+                    '\$ ${widget.product.price}',
                     style: priceTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: semiBold,
@@ -378,7 +356,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     height: 12.0,
                   ),
                   Text(
-                    'Unpaved trails and mixed surfaces are easy when you have the traction and support you need. Casual enough for the daily commute.',
+                    widget.product.description,
                     style: subtitleTextStyle.copyWith(
                       fontSize: 14.0,
                       fontWeight: light,
@@ -416,13 +394,14 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: familiarShoes.map((image) {
+                      children: productProvider.products.map((product) {
                         index++;
                         return Container(
-                            margin: EdgeInsets.only(
-                              left: index == 0 ? defaultMargin : 0,
-                            ),
-                            child: familiarShoesCard(image));
+                          margin: EdgeInsets.only(
+                            left: index == 0 ? defaultMargin : 0,
+                          ),
+                          child: FamiliarShoesCard(product: product),
+                        );
                       }).toList(),
                     ),
                   ),
