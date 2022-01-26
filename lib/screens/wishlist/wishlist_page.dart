@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo/providers/wishlist_provider.dart';
 
 import '../../themes/theme.dart';
 
@@ -9,6 +11,7 @@ class WishListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WishListProvider wishListProvider = Provider.of<WishListProvider>(context);
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -32,11 +35,11 @@ class WishListPage extends StatelessWidget {
           color: backgroundColor3,
           child: ListView(
             // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              WishlistCard(),
-              WishlistCard(),
-              WishlistCard(),
-            ],
+            children: wishListProvider.wishlist
+                .map((product) => WishlistCard(
+                      product: product,
+                    ))
+                .toList(),
           ),
         ),
       );
@@ -82,7 +85,10 @@ class WishListPage extends StatelessWidget {
               Container(
                 height: 44.0,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
+                  },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(
                       horizontal: 24.0,
@@ -113,8 +119,7 @@ class WishListPage extends StatelessWidget {
     return Column(
       children: [
         header(),
-        // emptyChat(),
-        content(),
+        wishListProvider.wishlist.length == 0 ? emptyChat() : content(),
       ],
     );
   }

@@ -27,11 +27,15 @@ class UserModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'name' : name,
-      'email' : email,
-      'username' : username,
-      'profile_photo_url' : profilePhotoUrl,
-      'token' : token,
+      'name': name,
+      'email': email,
+      'username': username,
+      'profile_photo_url': profilePhotoUrl,
+      'token': token,
     };
+  }
+
+  String getTotalPrice() {
+    return token;
   }
 }

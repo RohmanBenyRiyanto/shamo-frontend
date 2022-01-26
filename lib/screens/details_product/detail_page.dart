@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:shamo/models/product_model.dart';
+import 'package:shamo/providers/cart_provider.dart';
 import 'package:shamo/providers/product_provider.dart';
+import 'package:shamo/providers/wishlist_provider.dart';
 import 'package:shamo/widgets/familiar_shoes_card.dart';
 import 'package:shamo/widgets/primarybutton.dart';
 
@@ -25,10 +27,11 @@ class DetailProductPage extends StatefulWidget {
 
 class _DetailProductPageState extends State<DetailProductPage> {
   int currentIndex = 0;
-  bool isWishList = false;
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+    WishListProvider wishListProvider = Provider.of<WishListProvider>(context);
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
     Future<void> showSuccessDialog() async {
       return showDialog(
@@ -88,7 +91,9 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     width: 154,
                     height: 44,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/cart');
+                      },
                       style: TextButton.styleFrom(
                         backgroundColor: primaryColor,
                         shape: RoundedRectangleBorder(
@@ -243,11 +248,9 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        isWishList = !isWishList;
-                      });
+                      wishListProvider.setProduct(widget.product);
 
-                      if (isWishList) {
+                      if (wishListProvider.isWishList(widget.product)) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             backgroundColor: secondaryColor,
@@ -290,7 +293,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       }
                     },
                     child: Image.asset(
-                      isWishList
+                      wishListProvider.isWishList(widget.product)
                           ? 'assets/button_wishlist_blue.png'
                           : 'assets/button_wishlist.png',
                       width: 46,
@@ -457,6 +460,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                 ),
                               ),
                               onPressed: () {
+                                cartProvider.addCart(widget.product);
                                 showSuccessDialog();
                               },
                             ),
