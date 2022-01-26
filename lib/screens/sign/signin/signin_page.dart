@@ -102,7 +102,7 @@ class _SignInPageState extends State<SignInPage> {
                 fontWeight: semiBold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2.0,
             ),
             Text('Sign In to Countinue', style: subtitleTextStyle)
@@ -113,7 +113,7 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 70.0),
+        margin: const EdgeInsets.only(top: 70.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -124,12 +124,12 @@ class _SignInPageState extends State<SignInPage> {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
               ),
               decoration: BoxDecoration(
@@ -143,7 +143,7 @@ class _SignInPageState extends State<SignInPage> {
                       'assets/icon_email.png',
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Expanded(
@@ -174,7 +174,7 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20.0),
+        margin: const EdgeInsets.only(top: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -185,12 +185,12 @@ class _SignInPageState extends State<SignInPage> {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
               ),
               decoration: BoxDecoration(
@@ -204,7 +204,7 @@ class _SignInPageState extends State<SignInPage> {
                       'assets/icon_password.png',
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Expanded(
@@ -224,7 +224,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 12.0,
                     ),
                     InkWell(

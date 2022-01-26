@@ -8,8 +8,8 @@ import 'package:shamo/models/product_model.dart';
 import 'package:shamo/providers/cart_provider.dart';
 import 'package:shamo/providers/product_provider.dart';
 import 'package:shamo/providers/wishlist_provider.dart';
+import 'package:shamo/screens/chat_page/detail_chat_page.dart';
 import 'package:shamo/widgets/familiar_shoes_card.dart';
-import 'package:shamo/widgets/primarybutton.dart';
 
 import '../../themes/theme.dart';
 
@@ -36,7 +36,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
     Future<void> showSuccessDialog() async {
       return showDialog(
         context: context,
-        builder: (BuildContext context) => Container(
+        builder: (BuildContext context) => SizedBox(
           width: MediaQuery.of(context).size.width - (2 * defaultMargin),
           child: AlertDialog(
             backgroundColor: backgroundColor3,
@@ -64,7 +64,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     'assets/icon_success.png',
                     width: 100.0,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
                   Text(
@@ -74,7 +74,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       fontWeight: semiBold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
                   Text(
@@ -84,10 +84,10 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       fontWeight: light,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  Container(
+                  SizedBox(
                     width: 154,
                     height: 44,
                     child: TextButton(
@@ -160,7 +160,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
           ),
           CarouselSlider(
             items: widget.product.galleries
-                .map(
+                ?.map(
                   (image) => Image.network(
                     image.url,
                     width: MediaQuery.of(context).size.width,
@@ -183,7 +183,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.product.galleries.map((e) {
+            children: widget.product.galleries!.map((e) {
               index++;
               return dots(index);
             }).toList(),
@@ -226,7 +226,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.product.name,
+                          widget.product.name!,
                           style: primaryTextStyle.copyWith(
                             fontSize: 18.0,
                             fontWeight: semiBold,
@@ -235,7 +235,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          widget.product.category.name,
+                          widget.product.category!.name,
                           style: secondaryTextStyle.copyWith(
                             fontSize: 12.0,
                             fontWeight: regular,
@@ -359,7 +359,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     height: 12.0,
                   ),
                   Text(
-                    widget.product.description,
+                    widget.product.description!,
                     style: subtitleTextStyle.copyWith(
                       fontSize: 14.0,
                       fontWeight: light,
@@ -391,7 +391,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
                   SingleChildScrollView(
@@ -415,7 +415,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     margin: EdgeInsets.all(defaultMargin),
                     child: Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 54.0,
                           height: 54.0,
                           child: OutlinedButton(
@@ -434,8 +434,14 @@ class _DetailProductPageState extends State<DetailProductPage> {
                               color: primaryColor,
                             ),
                             onPressed: () {
-                              print('message');
-                              Navigator.pushNamed(context, '/detail-chat');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailChatPage(
+                                    product: widget.product,
+                                  ),
+                                ),
+                              );
                             },
                           ),
                         ),
@@ -443,7 +449,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                           width: 16.0,
                         ),
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: 54.0,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(

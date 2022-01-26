@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:shamo/models/product_model.dart';
+
 import '../../themes/theme.dart';
 import '../../widgets/chat_bubble.dart';
 
 class DetailChatPage extends StatelessWidget {
-  const DetailChatPage({Key? key}) : super(key: key);
+  const DetailChatPage({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +33,10 @@ class DetailChatPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
+                    // ignore: avoid_print
                     print('back');
                   },
-                  child: Container(
+                  child: const SizedBox(
                     width: 20,
                     height: 50,
                     child: Center(
@@ -39,12 +47,12 @@ class DetailChatPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20.0,
                 ),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 50.0,
                       height: 50.0,
                       child: Stack(
@@ -79,7 +87,7 @@ class DetailChatPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12.0,
                 ),
                 Expanded(
@@ -121,8 +129,8 @@ class DetailChatPage extends StatelessWidget {
       return Container(
         width: 225.0,
         height: 74.0,
-        margin: EdgeInsets.only(bottom: 20.0),
-        padding: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.only(bottom: 20.0),
+        padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: backgroundColor5,
           borderRadius: BorderRadius.circular(12.0),
@@ -138,7 +146,7 @@ class DetailChatPage extends StatelessWidget {
                 width: 54,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10.0,
             ),
             Expanded(
@@ -147,16 +155,16 @@ class DetailChatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'COURT VISION 2.0',
+                    product.name!,
                     style: primaryTextStyle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 2.0,
                   ),
                   Text(
-                    '\$ ' + '58,67',
+                    '\$ ${product.price}',
                     style: priceTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: medium,
@@ -167,6 +175,7 @@ class DetailChatPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                // ignore: avoid_print
                 print('remove product');
               },
               child: Image.asset(
@@ -181,18 +190,20 @@ class DetailChatPage extends StatelessWidget {
 
     Widget chatInput() {
       return Container(
-        margin: EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            productPreview(),
+            product is UninitializedProductModel
+                ? const SizedBox()
+                : productPreview(),
             Row(
               children: [
                 Expanded(
                   child: Container(
                     height: 45.0,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 16.0,
                     ),
                     decoration: BoxDecoration(
@@ -212,7 +223,7 @@ class DetailChatPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20.0,
                 ),
                 Container(
@@ -244,7 +255,7 @@ class DetailChatPage extends StatelessWidget {
     Widget content() {
       return ListView(
         padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-        children: [
+        children: const [
           ChatBubble(
             isSender: true,
             text: 'Hi, This item is still available?',

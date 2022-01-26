@@ -36,7 +36,7 @@ class ProductTile extends StatelessWidget {
                 20.0,
               ),
               child: Image.network(
-                product.galleries[0].url,
+                product.galleries![0].url,
                 width: 120,
                 height: 120,
                 fit: BoxFit.cover,
@@ -50,17 +50,17 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.category.name,
+                    product.category!.name,
                     style: secondaryTextStyle.copyWith(
                       fontSize: 12.0,
                       fontWeight: regular,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6.0,
                   ),
                   Text(
-                    product.name,
+                    product.name!,
                     style: primaryTextStyle.copyWith(
                       fontSize: 16.0,
                       fontWeight: semiBold,
@@ -68,7 +68,7 @@ class ProductTile extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6.0,
                   ),
                   Text(

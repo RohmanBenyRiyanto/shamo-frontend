@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shamo/models/product_model.dart';
+import 'package:shamo/screens/chat_page/detail_chat_page.dart';
 
 import '../themes/theme.dart';
 
@@ -9,10 +11,17 @@ class ChatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail-chat');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailChatPage(
+              product: UninitializedProductModel(),
+            ),
+          ),
+        );
       },
       child: Container(
-        margin: EdgeInsets.only(top: 33.0),
+        margin: const EdgeInsets.only(top: 33.0),
         child: Column(
           children: [
             Row(
@@ -25,7 +34,7 @@ class ChatTile extends StatelessWidget {
                     height: 54.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12.0,
                 ),
                 Expanded(
@@ -59,10 +68,10 @@ class ChatTile extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 12.0,
             ),
-            Divider(
+            const Divider(
               thickness: 1.0,
               color: Color(0xff2B2939),
             ),

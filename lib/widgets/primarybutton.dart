@@ -7,9 +7,11 @@ class PrimaryButton extends StatelessWidget {
     Key? key,
     this.text,
     this.press,
+    // ignore: non_constant_identifier_names
     this.margin_top,
   }) : super(key: key);
   final String? text;
+  // ignore: non_constant_identifier_names
   final double? margin_top;
   final Function? press;
 

@@ -35,7 +35,7 @@ class CheckOutSuccessPage extends StatelessWidget {
               'assets/icon_empty_cart.png',
               width: 80.0,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Text(
@@ -45,7 +45,7 @@ class CheckOutSuccessPage extends StatelessWidget {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Text(
@@ -59,7 +59,7 @@ class CheckOutSuccessPage extends StatelessWidget {
             SizedBox(
               height: defaultMargin,
             ),
-            Container(
+            SizedBox(
               height: 44.0,
               child: TextButton(
                 onPressed: () {
@@ -67,7 +67,7 @@ class CheckOutSuccessPage extends StatelessWidget {
                       context, '/home', (route) => false);
                 },
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 24.0,
                     vertical: 10.0,
                   ),
@@ -90,7 +90,7 @@ class CheckOutSuccessPage extends StatelessWidget {
             const SizedBox(
               height: 12.0,
             ),
-            Container(
+            SizedBox(
               height: 44.0,
               width: 180,
               child: TextButton(
@@ -99,7 +99,7 @@ class CheckOutSuccessPage extends StatelessWidget {
                   //     context, '/cart', (route) => false);
                 },
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 24.0,
                     vertical: 10.0,
                   ),
@@ -113,7 +113,7 @@ class CheckOutSuccessPage extends StatelessWidget {
                 child: Text(
                   'View My Order',
                   style: GoogleFonts.poppins(
-                    color: Color(0xffB7B6BF),
+                    color: const Color(0xffB7B6BF),
                     fontSize: 14.0,
                     fontWeight: regular,
                   ),

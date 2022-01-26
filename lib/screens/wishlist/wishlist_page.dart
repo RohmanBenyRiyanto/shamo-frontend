@@ -59,7 +59,7 @@ class WishListPage extends StatelessWidget {
                 'assets/image_wishlist.png',
                 width: 74.0,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Text(
@@ -69,7 +69,7 @@ class WishListPage extends StatelessWidget {
                   fontWeight: medium,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
@@ -79,10 +79,10 @@ class WishListPage extends StatelessWidget {
                   fontWeight: regular,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
-              Container(
+              SizedBox(
                 height: 44.0,
                 child: TextButton(
                   onPressed: () {
@@ -90,7 +90,7 @@ class WishListPage extends StatelessWidget {
                         context, '/home', (route) => false);
                   },
                   style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 24.0,
                       vertical: 10.0,
                     ),
@@ -119,6 +119,7 @@ class WishListPage extends StatelessWidget {
     return Column(
       children: [
         header(),
+        // ignore: prefer_is_empty
         wishListProvider.wishlist.length == 0 ? emptyChat() : content(),
       ],
     );

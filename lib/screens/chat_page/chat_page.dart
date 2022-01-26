@@ -34,7 +34,7 @@ class ChatPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: defaultMargin,
             ),
-            children: [
+            children: const [
               ChatTile(),
             ],
           ),
@@ -42,6 +42,7 @@ class ChatPage extends StatelessWidget {
       );
     }
 
+    // ignore: unused_element
     Widget emptyChat() {
       return Expanded(
         child: Container(
@@ -55,17 +56,17 @@ class ChatPage extends StatelessWidget {
                 'assets/icon_headset.png',
                 width: 80.0,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Text(
-                'Opss no message yet?',
+                'Ops\'s no message yet?',
                 style: primaryTextStyle.copyWith(
                   fontSize: 16.0,
                   fontWeight: medium,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
@@ -75,15 +76,15 @@ class ChatPage extends StatelessWidget {
                   fontWeight: regular,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
-              Container(
+              SizedBox(
                 height: 44.0,
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 24.0,
                       vertical: 10.0,
                     ),

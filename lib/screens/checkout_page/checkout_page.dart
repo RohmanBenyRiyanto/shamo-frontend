@@ -3,13 +3,21 @@ import 'package:provider/provider.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
 import 'package:shamo/providers/transaction_provider.dart';
+import 'package:shamo/widgets/loading_button.dart';
 
 import '../../themes/theme.dart';
 import '../../widgets/primarybutton.dart';
 import '../../widgets/checkout_card.dart';
 
-class CheckOutPage extends StatelessWidget {
+class CheckOutPage extends StatefulWidget {
   const CheckOutPage({Key? key}) : super(key: key);
+
+  @override
+  State<CheckOutPage> createState() => _CheckOutPageState();
+}
+
+class _CheckOutPageState extends State<CheckOutPage> {
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +27,10 @@ class CheckOutPage extends StatelessWidget {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
     handleCheckout() async {
+      setState(() {
+        isLoading = true;
+      });
+
       if (await transactionProvider.checkout(
         authProvider.user.token,
         cartProvider.carts,
@@ -28,6 +40,9 @@ class CheckOutPage extends StatelessWidget {
         Navigator.pushNamedAndRemoveUntil(
             context, '/checkout-success', (Route<dynamic> route) => false);
       }
+      setState(() {
+        isLoading = false;
+      });
     }
 
     AppBar header() {
@@ -305,11 +320,17 @@ class CheckOutPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                PrimaryButton(
-                  text: "Checkout Now",
-                  margin_top: 30.0,
-                  press: handleCheckout,
-                ),
+                isLoading
+                    ? LoadingButton(
+                        text: "Loading",
+                        margin_top: 30.0,
+                        press: handleCheckout,
+                      )
+                    : PrimaryButton(
+                        text: "Checkout Now",
+                        margin_top: 30.0,
+                        press: handleCheckout,
+                      ),
                 SizedBox(
                   height: defaultMargin,
                 ),

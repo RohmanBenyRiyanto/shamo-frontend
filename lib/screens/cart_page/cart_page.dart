@@ -49,17 +49,17 @@ class CartPage extends StatelessWidget {
               'assets/icon_empty_cart.png',
               width: 80.0,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Text(
-              'Opss! Your Cart is Empty',
+              'Ops\'s! Your Cart is Empty',
               style: primaryTextStyle.copyWith(
                 fontSize: 16.0,
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Text(
@@ -69,10 +69,10 @@ class CartPage extends StatelessWidget {
                 fontWeight: regular,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
-            Container(
+            SizedBox(
               height: 44.0,
               child: TextButton(
                 onPressed: () {
@@ -80,7 +80,7 @@ class CartPage extends StatelessWidget {
                       context, '/home', (route) => false);
                 },
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 24.0,
                     vertical: 10.0,
                   ),
@@ -121,7 +121,7 @@ class CartPage extends StatelessWidget {
     }
 
     Widget costumBottomNav() {
-      return Container(
+      return SizedBox(
         height: 180,
         child: Column(
           children: [
@@ -208,8 +208,10 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
+      // ignore: prefer_is_empty
       body: cartProvider.carts.length == 0 ? emptyCart() : content(),
-      bottomNavigationBar: cartProvider.carts.length == 0 ? SizedBox() : costumBottomNav(),
+      // ignore: prefer_is_empty
+      bottomNavigationBar: cartProvider.carts.length == 0 ? const SizedBox() : costumBottomNav(),
     );
   }
 }

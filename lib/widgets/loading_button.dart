@@ -11,6 +11,7 @@ class LoadingButton extends StatelessWidget {
     this.margin_top,
   }) : super(key: key);
   final String? text;
+  // ignore: non_constant_identifier_names
   final double? margin_top;
   final Function? press;
 
@@ -32,7 +33,7 @@ class LoadingButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 16.0,
               height: 16.0,
               child: CircularProgressIndicator(
@@ -40,7 +41,7 @@ class LoadingButton extends StatelessWidget {
                 valueColor: AlwaysStoppedAnimation(primaryTextColor),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 4.0,
             ),
             Text(

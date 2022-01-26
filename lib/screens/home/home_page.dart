@@ -82,11 +82,11 @@ class _HomePageState extends State<HomePage> {
                 width: defaultMargin,
               ),
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 12.0,
                   vertical: 10.0,
                 ),
-                margin: EdgeInsets.only(right: 16.0),
+                margin: const EdgeInsets.only(right: 16.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
                     color: primaryColor),
@@ -99,11 +99,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 12.0,
                   vertical: 10.0,
                 ),
-                margin: EdgeInsets.only(right: 16.0),
+                margin: const EdgeInsets.only(right: 16.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(color: subtitleColor),
@@ -117,11 +117,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 12.0,
                   vertical: 10.0,
                 ),
-                margin: EdgeInsets.only(right: 16.0),
+                margin: const EdgeInsets.only(right: 16.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(color: subtitleColor),
@@ -135,11 +135,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 12.0,
                   vertical: 10.0,
                 ),
-                margin: EdgeInsets.only(right: 16.0),
+                margin: const EdgeInsets.only(right: 16.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(color: subtitleColor),
@@ -153,11 +153,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 12.0,
                   vertical: 10.0,
                 ),
-                margin: EdgeInsets.only(right: 16.0),
+                margin: const EdgeInsets.only(right: 16.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(color: subtitleColor),
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 14.0,
               ),
             ],
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
 
     Widget popularProducts() {
       return Container(
-        margin: EdgeInsets.only(top: 14.0),
+        margin: const EdgeInsets.only(top: 14.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -238,7 +238,7 @@ class _HomePageState extends State<HomePage> {
 
     Widget newArrivals() {
       return Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 14.0,
         ),
         child: Column(

@@ -105,7 +105,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 fontWeight: semiBold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2.0,
             ),
             Text('Register and Happy Shopping', style: subtitleTextStyle)
@@ -116,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget fullnameInput() {
       return Container(
-        margin: EdgeInsets.only(top: 50.0),
+        margin: const EdgeInsets.only(top: 50.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -127,12 +127,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
               ),
               decoration: BoxDecoration(
@@ -146,7 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'assets/icon_name.png',
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Expanded(
@@ -177,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget usernameInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20.0),
+        margin: const EdgeInsets.only(top: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -188,12 +188,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
               ),
               decoration: BoxDecoration(
@@ -207,7 +207,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'assets/icon_username.png',
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Expanded(
@@ -238,7 +238,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20.0),
+        margin: const EdgeInsets.only(top: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -249,12 +249,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
               ),
               decoration: BoxDecoration(
@@ -268,7 +268,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'assets/icon_email.png',
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Expanded(
@@ -299,7 +299,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20.0),
+        margin: const EdgeInsets.only(top: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -310,12 +310,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 fontWeight: medium,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
               ),
               decoration: BoxDecoration(
@@ -329,7 +329,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'assets/icon_password.png',
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16.0,
                     ),
                     Expanded(
@@ -349,7 +349,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 12.0,
                     ),
                     InkWell(

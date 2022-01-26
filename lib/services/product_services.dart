@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shamo/models/product_model.dart';
-
-import 'package:shamo/models/user_model.dart';
-
 class ProductServices {
   String baseUrl = 'https://srv1.shamoserver.my.id/api';
 
@@ -13,6 +10,7 @@ class ProductServices {
 
     var response = await http.get(url, headers: headers);
 
+    // ignore: avoid_print
     print(response.body);
 
     if (response.statusCode == 200) {

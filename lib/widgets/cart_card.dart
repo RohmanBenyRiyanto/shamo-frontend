@@ -21,7 +21,7 @@ class CartCard extends StatelessWidget {
       margin: EdgeInsets.only(
         top: defaultMargin,
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 16.0,
         vertical: 10.0,
       ),
@@ -41,7 +41,7 @@ class CartCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
                   image: DecorationImage(
-                    image: NetworkImage(cart.product.galleries[0].url),
+                    image: NetworkImage(cart.product.galleries![0].url),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -54,7 +54,7 @@ class CartCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cart.product.name,
+                      cart.product.name!,
                       style: primaryTextStyle.copyWith(
                         fontSize: 14.0,
                         fontWeight: semiBold,

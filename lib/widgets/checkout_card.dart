@@ -18,7 +18,7 @@ class CheckOutCard extends StatelessWidget {
       margin: const EdgeInsets.only(
         top: 12.0,
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 12.0,
         vertical: 20.0,
       ),
@@ -36,7 +36,7 @@ class CheckOutCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
               image: DecorationImage(
-                image: NetworkImage(cart.product.galleries[0].url),
+                image: NetworkImage(cart.product.galleries![0].url),
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +49,7 @@ class CheckOutCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cart.product.name,
+                  cart.product.name!,
                   style: primaryTextStyle.copyWith(
                     fontSize: 14.0,
                     fontWeight: semiBold,
