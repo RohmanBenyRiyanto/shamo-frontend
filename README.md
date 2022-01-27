@@ -47,7 +47,7 @@ Shamo adalah aplikasi penjualan sepatu, yang dirancang menggunakan bahasa dart (
 
 ## Preview
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/72520643/151441375-79760baa-1277-4305-84bb-bb325d7ea747.jpg" alt="Image" width="2252" height="525" />
+    <img src="https://user-images.githubusercontent.com/72520643/151441375-79760baa-1277-4305-84bb-bb325d7ea747.jpg" alt="Image" width="2252" height="515" />
 </p>
 
 <div id="tools-and-package"></div>
