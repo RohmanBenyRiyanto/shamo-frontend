@@ -5,7 +5,7 @@ import 'package:shamo/models/cart_model.dart';
 
 
 class TransactionService {
-  String baseUrl = 'https://srv1.shamoserver.my.id/api';
+  String baseUrl = 'THIS IS API';
 
   Future<bool> checkout(
       String token, List<CartModel> carts, double totalPrice) async {
