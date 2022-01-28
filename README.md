@@ -86,12 +86,12 @@ _Below is an example of how you can instruct your audience on installing and set
 1. Get a Flutter Front End [view](https://github.com/RohmanBenyRiyanto/shamo-frontend)
 2. Clone the repo
 
-   ```sh
+   ```go
    gh repo clone RohmanBenyRiyanto/shamo-frontend
    ```
 3. Install packages
 
-   ```sh
+   ```go
    flutter pub get
    ```
 
@@ -104,12 +104,12 @@ _Below is an example of how you can instruct your audience on installing and set
 1. Get a Laravel API template [view](https://github.com/RohmanBenyRiyanto/shamo-backend)
 2. Clone the repo
 
-   ```sh
+   ```go
    gh repo clone RohmanBenyRiyanto/shamo-backend
    ```
 3. Install NPM packages
 
-   ```sh
+   ```go
    npm install
    ```
 
