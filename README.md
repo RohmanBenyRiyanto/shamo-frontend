@@ -91,7 +91,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 3. Install packages
 
-   ```go
+   ```dart
    flutter pub get
    ```
 
@@ -109,12 +109,12 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 3. Install NPM packages
 
-   ```go
+   ```npm
    npm install
    ```
 4. Install Composser
 
-   ```go
+   ```composer
    composer install
    or
    composer update
@@ -122,7 +122,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 4. Database: Migrations
 
-   ```go
+   ```laravel
    create database
    and
    php artisan make:migration
@@ -130,7 +130,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 5. File Storage
 
-   ```go
+   ```laravel
    php artisan storage:link
    ```
 
