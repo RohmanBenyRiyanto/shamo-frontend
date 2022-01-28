@@ -112,7 +112,27 @@ _Below is an example of how you can instruct your audience on installing and set
    ```go
    npm install
    ```
+4. Install Composser
 
+   ```go
+   composer install
+   or
+   composer update
+   ```
+
+4. Database: Migrations
+
+   ```go
+   create database
+   and
+   php artisan make:migration
+   ```
+
+5. File Storage
+
+   ```go
+   php artisan storage:link
+   ```
 
 <div id="creator"></div>
 
